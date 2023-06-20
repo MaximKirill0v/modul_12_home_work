@@ -7,15 +7,15 @@ SELECT *
 FROM StudentsGrades
 
 /* Отображение ФИО всех студентов */
-SELECT FullName
+SELECT Surname, name, Patronymic
 FROM StudentsGrades
 
 /* Отображение ФИО и всех средних оценок */
-SELECT FullName, AverageGradeAllSubjects
+SELECT Surname, name, Patronymic, AverageGradeAllSubjects
 FROM StudentsGrades
 
 /* Показать ФИО всех студентов с средней оценкой, больше 4 */
-SELECT FullName
+SELECT Surname, name, Patronymic
 FROM StudentsGrades
 WHERE AverageGradeAllSubjects > 4
 
