@@ -69,9 +69,6 @@ GROUP BY Color
 ORDER BY count_color DESC
 LIMIT 1
 
---ALTER TABLE Fruits_and_Vegetables
---ADD COLUMN count_color TEXT NOT NULL DEFAULT 0;
-
 /* Показать минимальную калорийность овощей и фруктов */
 SELECT name, min(Calories) AS Min_calories
 FROM Fruits_and_Vegetables
