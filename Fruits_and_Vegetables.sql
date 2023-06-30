@@ -62,21 +62,15 @@ FROM Fruits_and_Vegetables
 GROUP BY Color
 LIMIT 1
 
---/*SELECT Color, count(Color) AS coun_color,
---min(SELECT count(Color) FROM Fruits_and_Vegetables GROUP BY Color) AS min_count
---FROM Fruits_and_Vegetables
---GROUP BY Color
---HAVING coun_color = min_count*/
---
---SELECT min(SELECT count(Color) FROM Fruits_and_Vegetables GROUP BY Color) FROM Fruits_and_Vegetables
-
-
 /* Показать цвет с максимальным количеством овощей и фруктов */
 SELECT Color, count(color) AS count_color
 FROM Fruits_and_Vegetables
 GROUP BY Color
 ORDER BY count_color DESC
 LIMIT 1
+
+--ALTER TABLE Fruits_and_Vegetables
+--ADD COLUMN count_color TEXT NOT NULL DEFAULT 0;
 
 /* Показать минимальную калорийность овощей и фруктов */
 SELECT name, min(Calories) AS Min_calories
