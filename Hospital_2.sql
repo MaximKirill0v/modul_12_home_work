@@ -107,7 +107,7 @@ CREATE TABLE Donations
 (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	amount REAL NOT NULL DEFAULT 0 CHECK(amount >= 0),
-	donation_date TEXT NOT NULL DEFAULT (date('now')) CHECK(donation_date <= date('now')),
+	donation_date TEXT NOT NULL DEFAULT (date('now')) CHECK(donation_date <= 'CURRENT_DATE'),
 	department_id INTEGER NOT NULL,
 	sponsor_id INTEGER NOT NULL,
 	FOREIGN KEY(department_id) REFERENCES Departments(id),
