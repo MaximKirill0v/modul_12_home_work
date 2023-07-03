@@ -11,12 +11,13 @@ CREATE TABLE Departments
 
 INSERT INTO Departments(building, name)
 VALUES
-(1, 'травматологическое'),
-(2, 'хирургическое'),
-(2, 'кардиологическое'),
+(1, 'травматология'),
+(2, 'хирургия'),
+(2, 'кардиология'),
 (5, 'приёмное'),
-(3, 'неврологическое'),
+(3, 'неврология'),
 (4, 'лор')
+(2, 'стоматология')
 
 --Врачи (Doctors)
 CREATE TABLE IF NOT EXISTS Doctors
@@ -151,3 +152,72 @@ VALUES
 (300000, '2021-09-15', 4, 4),
 (600000, '2020-05-12', 5, 2),
 (400000, '2021-04-27', 6, 1)
+
+--Задание 1
+--1. Вывести названия отделений, что находятся в том же
+--корпусе, что и отделение “кардиология”.
+SELECT Departments.name
+FROM Departments
+WHERE building = 2 AND name != 'кардиология'
+
+--2. Вывести названия отделений, что находятся в том же
+--корпусе, что и отделения “кардиологическое” и “стоматологическое”.
+INSERT INTO Departments(building, name)
+VALUES
+(2, 'стоматология')
+
+SELECT Departments.name
+FROM Departments
+WHERE building = 2 AND Departments.name NOT IN ('кардиология', 'стоматология')
+
+--3. Вывести название отделения, которое получило меньше всего пожертвований.
+SELECT Departments.name, min(Donations.amount) AS min_amount
+FROM Departments, Donations
+WHERE Departments.id = Donations.department_id
+
+--4. Вывести фамилии врачей, ставка которых больше, чем у врача "Зайцев".
+SELECT Doctors.name, Doctors.surname, Doctors.salary
+FROM Doctors
+WHERE salary > (SELECT Doctors.salary FROM Doctors WHERE Doctors.surname = 'Зайцев')
+
+--5. Вывести названия палат, вместимость которых больше, чем средняя вместимость в палатах отделения
+--“Хирургия”.
+SELECT Wards.name, Wards.places
+FROM Wards
+WHERE places > (SELECT avg(Wards.places)
+				FROM Wards, Departments
+				WHERE Wards.department_id = Departments.id AND Departments.name = 'хирургия')
+
+--6. Вывести полные имена врачей, зарплаты которых
+--(сумма ставки и надбавки) превышают более чем на
+--1000 зарплату врача “Антон Зайцев”.
+SELECT Doctors.name, Doctors.surname, (Doctors.salary + Doctors.premium) AS res_salary
+FROM Doctors
+WHERE Doctors.salary + Doctors.premium > (SELECT Doctors.salary + Doctors.premium
+										  FROM Doctors
+										  WHERE Doctors.surname = 'Зайцев'
+										  AND Doctors.name = 'Антон') + 1000
+
+--7. Вывести названия отделений, в которых проводит
+--обследования врач “Антон Зайцев”.
+SELECT Departments.name
+FROM Departments
+INNER JOIN Doctors, DoctorsExaminations, Wards
+ON DoctorsExaminations.doctor_id = Doctors.id AND
+   Doctors.name = 'Антон' AND Doctors.surname = 'Зайцев' AND
+   Wards.department_id = Departments.id AND
+   DoctorsExaminations.ward_id = Wards.id
+
+--8. Вывести названия спонсоров, которые не делали пожертвования отделениям “хирургия” и “травматология”.
+SELECT DISTINCT Sponsors.name
+FROM Sponsors
+INNER JOIN Departments, Donations
+ON Donations.department_id = Departments.id AND
+   Donations.sponsor_id = Sponsors.id AND
+   Sponsors.id NOT IN (SELECT DISTINCT Sponsors.id
+				   FROM Sponsors, Donations, Departments
+                   WHERE Donations.department_id = Departments.id AND
+                         Donations.sponsor_id = Sponsors.id AND
+	                     Departments.name IN ('хирургия', 'травматология'))
+
+--9. Вывести фамилии врачей, которые проводят обследования в период с 12:00 до 15:00.
