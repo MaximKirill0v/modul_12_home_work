@@ -39,7 +39,8 @@ VALUES
 ('Наталья', 'Горячева', 10000, 55000),
 ('Егор', 'Степанов', 5000, 35000),
 ('Ирина', 'Королёва', 10000, 50000),
-('Александр', 'Пантелеев', 5000, 35000)
+('Александр', 'Пантелеев', 5000, 35000),
+('Галина', 'Исаева', 5000, 40000)
 
 --Обследования (Examinations)
 CREATE TABLE IF NOT EXISTS Examinations
@@ -158,17 +159,19 @@ VALUES
 --корпусе, что и отделение “кардиология”.
 SELECT Departments.name
 FROM Departments
-WHERE building = 2 AND name != 'кардиология'
+WHERE Departments.name != 'кардиология' AND
+      building = (SELECT Departments.building
+                  FROM Departments
+				  WHERE Departments.name = 'кардиология')
 
 --2. Вывести названия отделений, что находятся в том же
 --корпусе, что и отделения “кардиологическое” и “стоматологическое”.
-INSERT INTO Departments(building, name)
-VALUES
-(2, 'стоматология')
-
 SELECT Departments.name
 FROM Departments
-WHERE building = 2 AND Departments.name NOT IN ('кардиология', 'стоматология')
+WHERE Departments.name NOT IN ('кардиология', 'стоматология') AND
+	  building = (SELECT Departments.building
+                  FROM Departments
+				  WHERE Departments.name IN ('кардиология', 'стоматология'))
 
 --3. Вывести название отделения, которое получило меньше всего пожертвований.
 SELECT Departments.name, min(Donations.amount) AS min_amount
@@ -221,3 +224,79 @@ ON Donations.department_id = Departments.id AND
 	                     Departments.name IN ('хирургия', 'травматология'))
 
 --9. Вывести фамилии врачей, которые проводят обследования в период с 12:00 до 15:00.
+SELECT Doctors.surname
+FROM Doctors, DoctorsExaminations
+WHERE DoctorsExaminations.doctor_id = Doctors.id AND
+      start_time BETWEEN '12:00' AND '14:59' AND
+	  end_time BETWEEN '12:01' AND '15:00'
+
+
+--Задание 2
+--1. Вывести количество палат, вместимость которых
+--больше 10.
+SELECT count(places) AS count_places
+FROM Wards
+WHERE places > 10
+
+--2. Вывести названия корпусов и количество палат в каждом из них.
+SELECT Departments.building, sum(Wards.places) AS count_places
+FROM Departments, Wards
+WHERE Departments.id = Wards.department_id
+GROUP BY Departments.building
+
+--3. Вывести названия отделений и количество палат в
+--каждом из них.
+SELECT Departments.name, sum(Wards.places) AS count_places
+FROM Departments, Wards
+WHERE Departments.id = Wards.department_id
+GROUP BY Departments.name
+
+--4. Вывести названия отделений и суммарную надбавку
+--врачей в каждом из них.
+SELECT Departments.name, sum(Doctors.salary) AS all_doc_dep_salary
+FROM Departments, Doctors, Wards, DoctorsExaminations
+WHERE DoctorsExaminations.doctor_id = Doctors.id AND
+	  DoctorsExaminations.ward_id = Wards.id AND
+	  Wards.department_id = Departments.id
+GROUP BY Departments.id
+
+--5. Вывести названия отделений, в которых проводят
+--обследования 2 и более врачей.
+SELECT Departments.name, count(Doctors.id) AS count_doc_in_dep
+FROM Departments
+INNER JOIN Doctors, Wards, DoctorsExaminations
+
+ON DoctorsExaminations.doctor_id = Doctors.id AND
+   DoctorsExaminations.ward_id = Wards.id AND
+   Wards.department_id = Departments.id
+
+GROUP BY Departments.name
+HAVING count(Doctors.id) >= 2
+
+--6. Вывести количество врачей и их суммарную зарплату
+--(сумма ставки и надбавки).
+SELECT count(Doctors.id) AS count_doc, sum(Doctors.premium + Doctors.salary) AS all_doc_res_salary
+FROM Doctors
+
+--7. Вывести среднюю зарплату (сумма ставки и надбавки)
+--врачей.
+SELECT avg(Doctors.salary + Doctors.premium) AS avg_salary_all_doc
+FROM Doctors
+
+--8. Вывести названия палат с минимальной вместительностью.
+SELECT Wards.name
+FROM Wards
+WHERE places = (SELECT min(Wards.places) FROM Wards)
+
+--9. Вывести в каких из корпусов 1, 2, 3 и 5, суммарное
+--количество мест в палатах превышает 10. При этом
+--учитывать только палаты с количество мест больше 2.
+SELECT Departments.building
+FROM Wards, Departments
+
+WHERE Departments.id = Wards.department_id AND
+	  Departments.building IN (1, 2, 3, 5) AND
+      Wards.places > 2
+
+GROUP BY Departments.building
+HAVING sum(Wards.places) > 10
