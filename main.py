@@ -120,24 +120,3 @@ def execute_application():
 if __name__ == '__main__':
     execute_application()
 
-    # con = sqlite3.connect(":memory:")
-    # cur = con.cursor()
-    #
-    # sql = "create table people (name_last, age)"
-    # cur.execute(sql)
-    #
-    # who = "Yeltsin"
-    # age = 72
-    #
-    # # стиль qmark:
-    # sql = "insert into people values (?, ?)"
-    # cur.execute(sql, (who, age))
-    #
-    # # именованный стиль:
-    # sql = "select * from people where name_last=:who and age=:age"
-    # cur.execute(sql, {"who": who, "age": age})
-    #
-    # print(cur.fetchone())
-    #
-    # con.close()
-#
