@@ -1,0 +1,200 @@
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Russ', 'Campos', 'United Arab Emirates', 'Palm Springs', '0639 Limebank, Laredo, Utah, 87812', '2009-05-08', '+350-3833-535-675');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Claude', 'Canfield', 'Comoros', 'Grayslake', '2513 Wardlow Avenue, Gainesville, Michigan, 95586', '1983-04-07', '+689-0406-598-340');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Kathleen', 'Ervin', 'Tanzania', 'Saint Paul', '3441 Angleside Road, Anchorage, Oregon, 75732', '1974-03-22', '+671-0795-532-298');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Gilberte', 'Riddick', 'Kosovo', 'Duluth', '2622 Mauldeth Street, Minneapolis, Indiana, 34187', '1976-03-23', '+505-9088-852-945');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Brittney', 'Alfred', 'Poland', 'Green Bay', '1812 Ashleigh Road, Mission Viejo, New Jersey, 16541', '1971-08-05', '+53-6222-124-573');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Kyoko', 'Guillory', 'Kyrgyzstan', 'Jefferson', '7733 Level Lane, Arvada, South Dakota, 19227', '1974-02-08', '+962-2447-058-759');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Elina', 'Butts', 'Sweden', 'Elkhart', '7214 Godwin Avenue, Waco, North Dakota, 15807', '2009-06-14', '+33-8074-756-032');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Felipe', 'Rosado', 'Jordan', 'Temecula', '9534 Rowland, Olathe, Oregon, 59497', '2014-09-30', '+597-2705-768-443');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Paula', 'Huey', 'Maldives', 'Clearwater', '9649 Aber Avenue, Richland, Maine, 45105', '1989-03-07', '+40-1034-755-360');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Tomasa', 'Chinn', 'Panama', 'Davidson County', '2573 The Street, Rockford, Michigan, 38530', '2000-05-28', '+973-2173-720-643');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Tish', 'Wiggins', 'Marshall Islands', 'Macon', '3952 Old Lane, Spokane, Nevada, 58202', '1992-03-22', '+46-6974-212-195');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Edison', 'Harms', 'Singapore', 'Des Moines', '7011 Stanley Avenue, Fitchburg, Nevada, 99858', '1989-02-18', '+268-3269-908-915');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cory', 'Mahaffey', 'Taiwan', 'North Charleston', '4440 Keble Lane, Waco, Alabama, 23499', '1981-10-13', '+591-7245-499-608');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Willena', 'Batiste', 'Sweden', 'Miami', '6787 Apethorn, Downey, South Carolina, 95225', '2006-12-08', '+264-4094-332-856');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Tamara', 'Marin', 'Micronesia', 'Arvada', '1066 High Lane, Irvine, Georgia, 62251', '2009-12-17', '+38-0100-419-389');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Nancey', 'Stephenson', 'Brunei', 'Jersey City', '2917 Denis Road, Howell, Pennsylvania, 26624', '1973-09-17', '+37-7949-367-297');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Nickole', 'Hines', 'Bulgaria', 'Oklahoma City', '7676 Peter Street, Fort Walton Beach, Alabama, 99650', '2020-05-29', '+968-0847-928-953');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cleo', 'Eck', 'Antigua & Deps', 'Howell', '4118 Turn, Tempe, Mississippi, 46606', '1993-01-09', '+53-0831-544-435');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Nada', 'Lilley', 'South Africa', 'Torrance', '1759 Back, Lansing, Wyoming, 78360', '2013-08-07', '+266-2587-236-965');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cleopatra', 'Bernhardt', 'Armenia', 'Abilene', '4215 Thornbury Street, Roseville, Alaska, 27614', '1979-10-27', '+964-3082-247-530');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rebbecca', 'Rutter', 'Grenada', 'Greensboro', '1653 Marina, Garden Grove, Hawaii, 76817', '2011-01-30', '+504-2427-565-045');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Juliane', 'Simpson', 'Sri Lanka', 'Richland', '6938 Clock Avenue, Cary, Oregon, 90531', '2022-05-15', '+64-0499-709-445');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rheba', 'Brant', 'Luxembourg', 'Pasadena', '3348 Haugh Circle, Denver, West Virginia, 33659', '2012-01-19', '+357-7403-765-593');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rebbecca', 'Wooley', 'United Kingdom', 'Sunnyvale', '9952 Lever Avenue, Phoenix, Rhode Island, 46055', '2013-02-10', '+967-8163-197-916');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Chet', 'Odell', 'Sao Tome & Principe', 'Evansville', '5487 Brewery Road, Fresno, Nebraska, 69424', '1991-11-19', '+964-1996-532-559');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Kathline', 'Phillip', 'Estonia', 'Norwich', '5713 Arrow Street, Clarke County, Oklahoma, 73992', '2008-04-26', '+687-6307-329-425');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Zola', 'Clemens', 'Zambia', 'Salt Lake City', '9861 Tram Circle, San Francisco, Nevada, 49654', '1990-01-27', '+597-6722-710-113');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Janene', 'Blanchard-Gainey', 'Guinea-Bissau', 'Panama City', '7921 Solent, Pensacola, Mississippi, 66446', '1989-06-21', '+42-6543-090-707');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Chandra', 'Boggs', 'Eritrea', 'San Diego', '4911 Dollond Circle, Chula Vista, Wyoming, 17254', '2000-10-09', '+241-6035-449-085');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Candi', 'Wilde', 'Nigeria', 'El Monte', '7921 Fox Lane, Wichita, Mississippi, 69706', '2008-11-22', '+504-6602-446-630');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Jackson', 'Murphy', 'Zambia', 'Elizabeth', '8972 Clevedon Avenue, Racine, Connecticut, 69914', '1997-05-25', '+962-2048-193-046');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Jada', 'Chase', 'Vietnam', 'Phoenix', '9052 Hardmans, Johnson City, Minnesota, 38438', '1979-04-14', '+591-2583-000-431');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Ernestine', 'Wyman', 'Zimbabwe', 'McAllen', '7356 Badger, Muskegon, Vermont, 48482', '2013-10-24', '+39-0761-394-684');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Sofia', 'Lau', 'Uzbekistan', 'Orlando', '3995 Elmhurst Road, Baton Rouge, Virginia, 58577', '1974-10-07', '+507-5356-331-649');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Lisabeth', 'Ness-Mchugh', 'Pakistan', 'North Las Vegas', '3970 Dewsnap Circle, Santa Cruz, Pennsylvania, 79793', '2020-08-01', '+55-0592-163-343');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Voncile', 'Chaney', 'Mauritius', 'Santa Maria', '7382 Abbey Circle, Shreveport, South Dakota, 62397', '2001-05-22', '+598-4901-305-366');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Chandra', 'Troy', 'San Marino', 'Seattle', '6388 Arch Lane, Orange, Wyoming, 97607', '1975-11-06', '+90-4695-444-521');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Britteny', 'Douglas', 'Nicaragua', 'Overland Park', '5204 Walton, Youngstown, Delaware, 51639', '2017-02-11', '+506-7363-025-163');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Gregoria', 'Curtin', 'Uruguay', 'Bonita Springs', '1890 Meade Circle, Washington, Ohio, 28703', '1979-01-04', '+596-6891-908-950');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cheryl', 'Neeley', 'Botswana', 'Redding', '0787 Garners Avenue, Visalia, Iowa, 26455', '1976-09-01', '+212-2477-878-918');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Louie', 'Crowley-Arthur', 'Guinea-Bissau', 'Pittsburgh', '8876 Winifred Circle, Arvada, Nebraska, 59653', '1973-12-03', '+675-8602-475-794');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cornelia', 'Fredrickson', 'Canada', 'Lansing', '7816 Beacom Lane, Harlingen, Maryland, 33421', '1974-07-09', '+354-4543-079-012');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Dion', 'Gracia', 'Grenada', 'Inglewood', '9021 Claughton, Lafayette, Ohio, 48868', '1984-08-14', '+216-8771-150-393');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Ronnie', 'Stiles', 'Greece', 'Dallas', '2422 Hollinwood Street, Reading, Colorado, 03659', '1999-11-23', '+972-7844-698-452');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Mario', 'Orosco', 'Equatorial Guinea', 'Medford', '4569 Worcester Road, Norfolk, Indiana, 18904', '2015-05-26', '+82-8901-230-143');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Russel', 'Dale', 'Grenada', 'Olathe', '3879 Howley, Port Saint Lucie, North Dakota, 37951', '2007-07-06', '+46-4015-422-908');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Lady', 'Fultz', 'France', 'Havre de Grace', '9286 Rostron Street, Denver, Georgia, 74653', '2010-03-04', '+64-5170-929-134');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Glendora', 'Mobley', 'Bahrain', 'Hampton', '9102 Laskey Lane, Palm Springs, Kentucky, 90727', '2000-12-23', '+55-8889-323-130');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rae', 'Dowling', 'Uruguay', 'Carrollton', '6356 Foley Street, Temecula, Minnesota, 03134', '2020-12-17', '+42-5250-176-892');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Doloris', 'Brumfield', 'Netherlands', 'Henderson', '3757 Forshaw Circle, Norfolk, Pennsylvania, 28989', '1985-01-24', '+64-6192-027-421');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Meridith', 'Bandy', 'San Marino', 'Bonita Springs', '1386 Andertons Circle, Yonkers, South Carolina, 75902', '1989-09-22', '+234-0122-331-820');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Angelica', 'Geiger', 'Mauritius', 'Springdale', '7070 Ordinal Lane, Stockton, New Mexico, 80331', '1991-04-24', '+354-3621-165-583');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Desire', 'Pendleton', 'Germany', 'Santa Ana', '5633 Forth Lane, Hemet, Michigan, 53848', '1987-06-07', '+38-1002-036-901');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Dacia', 'Isbell', 'Korea North', 'Providence', '1241 Horrobin Lane, Lincoln, Connecticut, 92932', '2019-12-24', '+225-9968-632-833');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Thersa', 'Bartholomew', 'Nepal', 'Vero Beach', '3808 Nunsfield Circle, GreenBay, Rhode Island, 15614', '2019-12-09', '+251-6406-796-030');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Wendie', 'Sargent-Spivey', 'Mali', 'Norman', '3270 Armside Lane, Winston, Kentucky, 03973', '1997-06-03', '+357-7795-354-978');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Basilia', 'Youngblood', 'Romania', 'Alexandria', '4167 Dagenham Street, Salem, Idaho, 27058', '1983-04-03', '+266-9455-906-281');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rigoberto', 'Parish', 'Oman', 'Hesperia', '9003 Broad Circle, Grand Rapids, Louisiana, 93323', '1974-04-20', '+968-5859-629-513');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Bebe', 'Basham', 'China', 'Lansing', '4259 Ebsworth, Melbourne, Pennsylvania, 15852', '2000-05-02', '+256-8045-481-408');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Graham', 'Barbour', 'Mozambique', 'Poughkeepsie', '6842 Reedgate, Wichita, New York, 61455', '2009-09-16', '+852-7377-040-591');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Modesta', 'Bearden', 'Burundi', 'Burlington', '8396 Leburmum Lane, Knoxville, Connecticut, 56116', '2009-11-06', '+671-1322-966-342');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Renetta', 'Ballard', 'Jordan', 'Irvine', '8556 Mark, Raleigh, Arizona, 17801', '1976-03-29', '+255-8696-978-922');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Anika', 'Chau', 'Moldova', 'Amarillo', '9453 Back Circle, Corpus Christi, Iowa, 10559', '2006-08-30', '+592-6720-042-345');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Charlena', 'Smith', 'Paraguay', 'Monterey', '4843 Carmoor Road, Houston, Wyoming, 40250', '2007-07-08', '+33-7697-319-052');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Shauna', 'Phillip', 'Kuwait', 'Ogden', '5711 Rainham, Portland, Washington, 11081', '1988-09-02', '+39-0309-530-268');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Vince', 'Starling', 'Egypt', 'Sioux Falls', '5730 Searby, Appleton, New Hampshire, 31066', '2016-06-08', '+43-8719-889-853');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Whitley', 'Mclemore', 'Grenada', 'Baton Rouge', '8241 Lilly Street, Fullerton, Kentucky, 37310', '1988-06-08', '+221-3729-352-565');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Deborah', 'Omalley', 'Niger', 'Simi Valley', '0400 Old Avenue, Marina, Vermont, 92393', '1991-09-28', '+886-7334-013-872');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Roslyn', 'Barfield', 'Turkey', 'Bellevue', '6841 Thornby Lane, El Monte, South Dakota, 37521', '1979-12-03', '+268-0174-086-337');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Inga', 'Murry', 'Albania', 'Anaheim', '7207 Earles Avenue, GreenBay, North Dakota, 17171', '2022-07-14', '+886-4578-993-656');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Kandy', 'Pitts', 'Jordan', 'Indianapolis', '4849 Clito, Topeka, Oklahoma, 41885', '1977-09-19', '+57-0599-831-478');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Rina', 'Duckett', 'Latvia', 'Saginaw', '0303 Siskin Avenue, Orange, Wisconsin, 56066', '1988-11-11', '+508-0440-622-279');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Antony', 'Nall', 'Latvia', 'Antioch', '7905 Edgemoor Street, Shreveport, South Carolina, 64130', '2020-05-06', '+33-2309-721-789');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Alexandra', 'Truitt', 'New Zealand', 'Provo', '9352 Count Street, Normal, Montana, 14385', '1979-03-03', '+689-8680-910-869');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Lynn', 'Felder', 'Togo', 'Bethlehem', '1930 John Avenue, Fargo, Nevada, 36400', '2007-05-05', '+62-6437-301-125');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cecelia', 'Strader', 'Suriname', 'Tulsa', '7833 Redstone Avenue, Yonkers, Maine, 44803', '1993-02-11', '+66-2449-887-841');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Marcellus', 'Brooks', 'Saint Vincent & the Grenadines', 'Phoenix', '9628 Apple Road, Baton Rouge, New Mexico, 24464', '2013-04-30', '+679-3738-813-746');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Scottie', 'Nestor', 'Portugal', 'Ogden', '7003 Cascade, Kissimmee, Minnesota, 37462', '1974-01-17', '+65-2061-655-061');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Adelia', 'Meek', 'Ethiopia', 'Boston', '5149 Riverside, Detroit, California, 64325', '1977-10-04', '+62-6905-878-868');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Eugena', 'Stricklin', 'Qatar', 'Lexington', '9426 Hibernia Lane, Portland, Wisconsin, 38271', '2006-03-10', '+966-3170-058-054');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Pura', 'Rainey', 'Romania', 'Warren', '7173 Queenston Avenue, Bradenton, Montana, 34200', '2003-05-29', '+684-9029-494-222');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Sandi', 'Autry', 'Bhutan', 'Kissimmee', '2138 Bleasdale Lane, Ocala, Louisiana, 52917', '1975-09-26', '+49-5681-411-051');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Kaley', 'Reece', 'Algeria', 'Norwich', '4495 Welcomb, McAllen, Nebraska, 95524', '1970-08-10', '+81-8000-119-399');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Dawne', 'Pate', 'Uzbekistan', 'Chandler', '3938 Stanmoor Road, Abilene, Montana, 31059', '1984-08-31', '+48-9320-283-968');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Eldon', 'Kiefer', 'Tunisia', 'Cathedral City', '4353 Heald Avenue, Mission Viejo, Illinois, 37689', '1985-02-22', '+268-6917-536-154');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Tammi', 'Hatch', 'Bolivia', 'Ocala', '3911 Stoneleigh Lane, Fitchburg, New York, 11100', '2014-05-21', '+37-4131-670-326');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cheree', 'Ritchey', 'Gabon', 'Memphis', '2604 Wallace Circle, Clarksville, Washington, 60865', '1974-03-17', '+508-8150-180-154');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Elenor', 'Lujan', 'Malaysia', 'Utica', '0324 New, Scottsdale, Connecticut, 16242', '1992-05-31', '+972-3981-503-798');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Nenita', 'Oates', 'Vanuatu', 'Kissimmee', '4442 Sykes Circle, Carrollton, Illinois, 86587', '1993-01-06', '+964-8743-252-261');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Chet', 'Rosenthal', 'Malawi', 'Elkhart', '0777 Beynon Avenue, Savannah, Maryland, 13558', '2018-07-06', '+30-6146-343-515');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Barbra', 'Hopper-Pressley', 'Tuvalu', 'Coral Springs', '0508 Copper Avenue, Rochester, Kansas, 74636', '2019-04-05', '+53-2930-367-377');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Carolee', 'Paige', 'Kyrgyzstan', 'Racine', '3121 Finlay, Charlotte, Illinois, 89332', '1995-12-06', '+972-7105-067-833');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Breann', 'Guay', 'Barbados', 'Springfield', '2139 Lowe, Chesapeake, New Jersey, 48497', '1973-11-14', '+34-6873-425-671');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Darla', 'Chitwood', 'Uganda', 'Fontana', '8692 Hopefield, Kissimmee, New York, 09626', '1980-12-26', '+353-7776-092-210');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Carlie', 'Holton', 'Estonia', 'Bridgeport', '1597 Lifton Street, Milwaukee, Mississippi, 12749', '1985-02-04', '+595-3661-921-872');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Natalie', 'Smiley', 'Malaysia', 'San Francisco', '4655 Burston, Gastonia, North Carolina, 30033', '1977-10-17', '+37-1673-414-453');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Anissa', 'Nealy', 'Ireland {Republic}', 'Lexington', '2259 Ainsford Avenue, Charleston, New Hampshire, 39419', '1994-07-27', '+502-2446-086-834');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cindi', 'Corwin', 'Bahrain', 'Ogden', '5949 Lyndon Circle, Grand Prairie, Rhode Island, 13079', '2022-07-02', '+351-8825-575-941');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Carole', 'Bohannon', 'Haiti', 'Davenport', '8223 Fairacres, Naperville, New Mexico, 24100', '2004-06-16', '+98-5017-858-917');
+INSERT INTO People (name, surname, country, city, addressus, date_of_birth, phone)
+VALUES ('Cori', 'Mcgehee-Duarte', 'Panama', 'Richmond County', '2320 Mawdsley Road, Stamford, West Virginia, 04945', '2023-03-17', '+596-1713-331-889');
