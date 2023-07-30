@@ -1,258 +1,391 @@
-import sqlite3
-from sqlite3 import Error
-import os
+from PyQt6 import QtWidgets
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem
+from Designer_windows.new_main_window import Ui_MainWindow
+from Designer_windows.insert import UiInsertDialog
+from Designer_windows.delete import UiDeleteDialog
+from Designer_windows.update import UiUpdateDialog
+from Designer_windows.filter import UiFilterDialog
+from Designer_windows.save_filter_window import UiSaveFilterDialog
 import json
+from people_db import PeopleDB
+import sys
 
 
-# Задание 1.
-# Создайте базу данных с одной таблицей People (имя, фамилия, страна,
-# город, адрес, дата рождения).
-# Добавьте возможность вставки, удаления и обновления данных через
-# интерфейс приложения с помощью запросов INSERT, DELETE, UPDATE. Перед
-# исполнением запроса проверяйте корректность названия таблицы.
-# Добавьте к приложению возможность сохранять результаты работы
-# фильтров в файл. Например, результат работы фильтра по отображению всех
-# людей или результат работы фильтра по отображению людей из одного
-# города.
+class InsertDialog(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.name_table = 'people'
+        self.insert_window = QtWidgets.QDialog()
+        self.ui_window = UiInsertDialog()
+        self.ui_window.setupUi(self.insert_window)
 
-def create_table(connection, name_table: str):
-    with connection:
-        cursor = connection.cursor()
-        sql_request = f'''CREATE TABLE IF NOT EXISTS {name_table}
-                        (
-                          id INTEGER PRIMARY KEY AUTOINCREMENT,
-                          name TEXT NOT NULL,
-                          surname TEXT NOT NULL,
-                          country TEXT NOT NULL,
-                          city TEXT,
-                          address TEXT,
-                          date_of_birth TEXT,
-                          phone TEXT UNIQUE NOT NULL
-                        )'''
-        cursor.execute(sql_request)
-        print(f'Таблица "{name_table}" создана.')
-        cursor.close()
+        self.ui_window.pushButton.clicked.connect(self.insert_data_people_to_db)
 
+    def change_name_table(self, new_name_table: str):
+        self.name_table = new_name_table
 
-def insert_one_people(name_db: str, connection, name_table, *args):
-    with connection:
-        if os.path.exists(name_db):
-            cursor = connection.cursor()
-            sql_request = f'''INSERT INTO {name_table} (name, surname, country, city, address, date_of_birth, phone)
-                            VALUES (?, ?, ?, ?, ?, ?, ?)'''
-            try:
-                cursor.execute(sql_request, *args)
-                print(f'Данные успешно добавлены в таблицу {name_table}.')
-            except Error as e:
-                print(e)
-            finally:
-                cursor.close()
+    def show_window(self):
+        self.insert_window.show()
+
+    def close_window(self):
+        self.insert_window.close()
+
+    def insert_data_people_to_db(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        name = self.ui_window.name.text()
+        surname = self.ui_window.surname.text()
+        country = self.ui_window.country.text()
+        city = self.ui_window.city.text()
+        address = self.ui_window.address.text()
+        date_of_birth = self.ui_window.date_of_birth.text()
+        phone = self.ui_window.phone.text()
+
+        if name == '' or surname == '' or country == '' or city == '' or address == '':
+            dlg.setText(f'Заполните пустые поля!')
+            dlg.exec()
+        elif not people_data_base.check_valid_date(date_of_birth):
+            dlg.setText(f'Не корректный формат записи даты рождения!')
+            dlg.exec()
+        elif not people_data_base.check_values_from_db('phone', phone):
+            dlg.setText(f'Данный номер телефона уже есть в БД!')
+            dlg.exec()
+        elif not people_data_base.check_valid_phone(phone):
+            dlg.setText(f'Не корректный формат записи телефона!')
+            dlg.exec()
         else:
-            print(f'БД {name_db} не существует.')
+            if people_data_base.insert_one_people(self.name_table, (name, surname, country, city, address,
+                                                                    date_of_birth, phone)):
 
+                row = main_window.table_widget.rowCount()
+                main_window.table_widget.insertRow(row)
 
-def insert_many_people(name_db: str, connection, name_table, peoples_data: list[tuple]):
-    with connection:
-        if os.path.exists(name_db):
-            cursor = connection.cursor()
-            sql_request = f'''INSERT INTO {name_table} (name, surname, country, city, address, date_of_birth, phone)
-                            VALUES (?, ?, ?, ?, ?, ?, ?)'''
-            for data in peoples_data:
-                try:
-                    cursor.execute(sql_request, data)
-                except Error as e:
-                    print(e)
-            print(f'Данные из списка успешно добавлены в таблицу {name_table}.')
-            cursor.close()
-        else:
-            print(f'БД {name_db} не существует.')
+                main_window.table_widget.setItem(row, 0, QTableWidgetItem(str(people_data_base.get_last_id())))
+                main_window.table_widget.setItem(row, 1, QTableWidgetItem(name))
+                main_window.table_widget.setItem(row, 2, QTableWidgetItem(surname))
+                main_window.table_widget.setItem(row, 3, QTableWidgetItem(country))
+                main_window.table_widget.setItem(row, 4, QTableWidgetItem(city))
+                main_window.table_widget.setItem(row, 5, QTableWidgetItem(address))
+                main_window.table_widget.setItem(row, 6, QTableWidgetItem(date_of_birth))
+                main_window.table_widget.setItem(row, 7, QTableWidgetItem(phone))
 
-
-def read_people_data_from_txt(path: str) -> list[tuple]:
-    if os.path.exists(path):
-        with open(path, 'r', encoding='utf8') as file:
-            people_data_list = []
-            for num, record in enumerate(file):
-                if num % 2 != 0:
-                    tuple_data = tuple(word for word in record[9:-4].split("', '"))
-                    people_data_list.append(tuple_data)
-        return people_data_list
-    else:
-        print(f'Файла по пути "{path}" не существует.')
-
-
-def check_values_from_db(connection, name_db: str, name_table: str, field: str, check_values: str) -> bool:
-    if check_values.isdigit():
-        check_values = int(check_values)
-    with connection:
-        if os.path.exists(name_db):
-            cursor = connection.cursor()
-            cursor.execute(f"""SELECT * FROM {name_table} WHERE {field} = ?""", (check_values,))
-    return cursor.fetchall() == []
-
-
-def delete_data_from_db(name_db: str, connection, name_table, field_to_delete: str, values_to_delete: str):
-    if values_to_delete.isdigit():
-        values_to_delete = int(values_to_delete)
-    with connection:
-        if os.path.exists(name_db):
-            cursor = connection.cursor()
-            try:
-                sql_request = f'''DELETE FROM {name_table}
-                                  WHERE {field_to_delete} = ?
-                               '''
-                cursor.execute(sql_request, (values_to_delete,))
-                print(f'Данные о человеке под {field_to_delete} = {values_to_delete} удалены.')
-            except Error as e:
-                print(e)
-            finally:
-                connection.commit()
-                cursor.close()
-        else:
-            print(f'БД {name_db} не существует.')
-
-
-def update_phone(name_db: str, connection, name_table, field_to_update: str, new_values: str, last_values: str):
-    with connection:
-        if os.path.exists(name_db):
-            cursor = connection.cursor()
-            try:
-                sql_request = f'''UPDATE {name_table}
-                                  SET {field_to_update} = ?
-                                  WHERE {field_to_update} = ?
-                               '''
-                cursor.execute(sql_request, (new_values, last_values))
-                print(f'Старые данные - "{last_values}" успешно заменены на "{new_values}".')
-            except Error as e:
-                print(e)
-            finally:
-                connection.commit()
-                cursor.close()
-        else:
-            print(f'БД {name_db} не существует.')
-
-
-def save_to_json_file(path: str):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            fields = func(*args, **kwargs)
-            with open(path, 'a') as file:
-                print(fields)
-                for field in fields:
-                    json.dump(field, file)
-            return fields
-
-        return wrapper
-
-    return decorator
-
-
-@save_to_json_file('./people_data/data_people.json')
-def filter_by_city(name_db: str, connection, name_table, fields: str, values: str):
-    if os.path.exists(name_db):
-        cursor = connection.cursor()
-        try:
-            sql_request = f'''SELECT * FROM {name_table}
-                              WHERE {fields} = ? 
-                           '''
-            cursor.execute(sql_request, (values,))
-            fields = cursor.fetchall()
-            return fields
-        except Error as e:
-            print(e)
-        finally:
-            cursor.close()
-    else:
-        print(f'БД {name_db} не существует.')
-
-
-def interface_app():
-    print('Введите число для работы с приложением: \n=> 1 - добавить данные пользователя в БД'
-          '\n=> 2 - изменение данных в БД\n=> 3 - выборка данных пользователей по фильтру\n'
-          '=> 4 - удаление данных пользователя из таблицы\n=> 5 - выход из программы')
-
-
-def execute_application():
-    name_db = 'People.db'
-    connection = sqlite3.connect(name_db)
-    name_table = 'People'
-    create_table(connection, name_table)
-
-    # добавление в таблицу данных одного человека
-    # people_data = ('Maxim', 'Kirillov', 'Russia', 'Yaroslavl', 'Lenina', '1989-02-14', '+671-0795-532-256')
-    # insert_one_people(name_db, connection, name_table, people_data)
-
-    # считывание данных из txt файла и преобразование данных к списку кортежей
-    # path_to_txt_people_data = './people_data/data_people.txt'
-    # people_list_tuple = read_people_data_from_txt(path_to_txt_people_data)
-
-    # добавление в таблицу данных многих людей
-    # insert_many_people(name_db, connection, name_table, people_list_tuple)
-
-    # удаление данных из таблицы по введённому полю и его значению
-    # fields_for_delete = 'phone'
-    # values_to_delete = '+350-3833-535-675'
-    #
-    # if not check_values_from_db(connection, name_db, name_table, fields_for_delete, values_to_delete):
-    #     delete_data_from_db(name_db, connection, name_table, fields_for_delete, values_to_delete)
-    # else:
-    #     print(f'Человек с полем {fields_for_delete} = {values_to_delete} '
-    #           f'отсутствует в таблице. Удаление данных не возможно.')
-
-    # изменение данных в БД
-    # last_values = '+65-2061-655-061'
-    #     # new_values = '+43-9021-344-097'
-    #     # fields_for_update = 'phone'
-    # if not check_values_from_db(connection, name_db, name_table, fields_for_update, last_values):
-    #     update_phone(name_db, connection, name_table, fields_for_update, new_values, last_values)
-    # else:
-    #     print(f'Человек с полем {fields_for_update} = {last_values} '
-    #           f'отсутствует в таблице. Обновление данных не возможно.')
-
-    # выборка из БД
-    # field = 'country'
-    # values = 'Nigeria'
-    #
-    # fields = filter_by_city(name_db, connection, name_table, field, values)
-    # if fields:
-    #     for field in fields:
-    #         print(field)
-    # else:
-    #     print(f"Данные с полем '{field}' = '{values}' в БД не найдены.")
-
-    while True:
-        interface_app()
-        number_input = input('=> ')
-        numbers_app = ('1', '2', '3', '4', '5')
-        if number_input == '1':
-            print('Введите имя, фамилию, страну, город, улицу, дату рождения, телефон через запятую и пробел:\n'
-                  '# Степанов, Степан, Россия, Саратов, ул. Ленина, 1999-12-28, +671-0795-532-200')
-            people_data = tuple(input().split(', '))
-            try:
-                insert_one_people(name_db, connection, name_table, people_data)
-                print('Пользователь успешно добавлен в БД.')
-            except Error as e:
-                print(e)
+                dlg = QMessageBox(self)
+                dlg.setWindowTitle("Good news!")
+                dlg.setText(f'Данные успешно добавлены в таблицу.')
+                dlg.exec()
             else:
-                print('Не корректные данные, повторите ввод.')
-
-        if number_input == '2':
-            
-            fields_for_update = 'name', 'surname', 'country', 'city', 'address', 'date_of_birth', 'phone'
-
-            field_for_update = input('Введите название поля, значение которого хотите изменить'
-                                     '(name, surname, country, city, address, date_of_birth, phone): ')
-            if field_for_update in fields_for_update:
+                dlg = QMessageBox(self)
+                dlg.setWindowTitle("Bad news!")
+                dlg.setText(f'Данные не добавлены в таблицу! Не корректные значения!')
+                dlg.exec()
+            self.close_window()
 
 
-        if number_input not in numbers_app:
-            print('Введено не корректное число, повторите попытку.')
-        if number_input == '5':
-            break
+class DeleteDialog(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.name_table = 'people'
+        self.delete_window = QtWidgets.QDialog()
+        self.ui_window = UiDeleteDialog()
+        self.ui_window.setupUi(self.delete_window)
 
-    connection.close()
-    print(f'Соединение с БД "{name_db}" завершено.')
+        self.ui_window.btn_del.clicked.connect(self.delete_user_by_id)
+
+    def change_name_table(self, new_name_table: str):
+        self.name_table = new_name_table
+
+    def show_window(self):
+        self.delete_window.show()
+
+    def close_window(self):
+        self.delete_window.close()
+
+    def delete_user_by_id(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        id_user = self.ui_window.lineEdit_id.text()
+        if people_data_base.check_values_from_db('id', id_user):
+            dlg.setText(f'Пользователя под введённым id нет в БД!')
+            dlg.exec()
+        else:
+            if people_data_base.delete_user_by_id(self.name_table, id_user):
+                main_window.table_widget.clear()
+                main_window.set_table_widget()
+                dlg.setText(f'Пользователь успешно удалён!')
+                dlg.exec()
+            self.close_window()
+
+
+class UpdateDialog(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.name_table = 'people'
+
+        self.update_window = QtWidgets.QDialog()
+        self.ui_window = UiUpdateDialog()
+        self.ui_window.setupUi(self.update_window)
+
+        self.ui_window.btn_id.clicked.connect(self.confirm_id)
+
+    def change_name_table(self, new_name_table: str):
+        self.name_table = new_name_table
+
+    def show_window(self):
+        self.update_window.show()
+
+    def close_window(self):
+        self.update_window.close()
+
+    def confirm_id(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        id_user = self.ui_window.lineEdit.text()
+        if people_data_base.check_values_from_db('id', id_user):
+            dlg.setText(f'Пользователя под введённым id нет в БД!')
+            dlg.exec()
+        else:
+            user_data = people_data_base.get_values_by_id(self.name_table, id_user)[0][1:]
+            place_holder_text = (self.ui_window.name, self.ui_window.surname, self.ui_window.country,
+                                 self.ui_window.city, self.ui_window.address, self.ui_window.date_of_birth,
+                                 self.ui_window.phone)
+
+            for num, user_value in enumerate(user_data):
+                place_holder_text[num].setText(user_data[num])
+            self.ui_window.btn_update.clicked.connect(self.update_data_user)
+
+    def update_data_user(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        id_user = self.ui_window.lineEdit.text()
+        name = self.ui_window.name.text()
+        surname = self.ui_window.surname.text()
+        country = self.ui_window.country.text()
+        city = self.ui_window.city.text()
+        address = self.ui_window.address.text()
+        date_of_birth = self.ui_window.date_of_birth.text()
+        phone = self.ui_window.phone.text()
+        if name == '' or surname == '' or country == '' or city == '' or address == '':
+            dlg.setText(f'Заполните пустые поля!')
+            dlg.exec()
+        elif not people_data_base.check_valid_date(date_of_birth):
+            dlg.setText(f'Не корректный формат записи даты рождения!')
+            dlg.exec()
+        elif not people_data_base.check_valid_phone(phone):
+            dlg.setText(f'Не корректный формат записи телефона!')
+            dlg.exec()
+        else:
+            if people_data_base.update_users_data(self.name_table, (name, surname, country, city, address,
+                                                                    date_of_birth, phone, id_user)):
+                dlg = QMessageBox(self)
+                main_window.table_widget.clear()
+                main_window.set_table_widget()
+                dlg.setWindowTitle("Good news!")
+                dlg.setText(f'Данные обновлены.')
+                dlg.exec()
+            else:
+                dlg = QMessageBox(self)
+                dlg.setWindowTitle("Bad news!")
+                dlg.setText(f'Данные не обновлены! Такой номер телефона уже есть в БД!')
+                dlg.exec()
+            self.close_window()
+
+
+class FilterDialog(QMainWindow):
+
+    def __init__(self):
+        super(FilterDialog, self).__init__()
+        self.name_table = 'people'
+
+        self.filter_window = QtWidgets.QDialog()
+        self.ui_window = UiFilterDialog()
+        self.ui_window.setupUi(self.filter_window)
+
+        self.data_by_field_and_values = []
+
+        self.ui_window.pushButton.clicked.connect(self.show_filter)
+
+    def show_filter(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        field = self.ui_window.comboBox.currentText()
+        if field == 'Имя':
+            field = 'name'
+        elif field == 'Фамилия':
+            field = 'surname'
+        elif field == 'Страна':
+            field = 'country'
+        elif field == 'Город':
+            field = 'city'
+        elif field == 'Адрес':
+            field = 'address'
+        elif field == 'Дата рождения':
+            field = 'date_of_birth'
+        else:
+            field = 'phone'
+        field_value = self.ui_window.name.text()
+        if people_data_base.check_values_from_db(field, field_value):
+            dlg.setText(f'По введённым данным ничего не нашлось!')
+            dlg.exec()
+        else:
+            data_by_field_and_values = people_data_base.get_data_by_field_and_values(field, field_value)
+            self.data_by_field_and_values = [data for data in data_by_field_and_values]
+            main_window.table_widget.setRowCount(len(data_by_field_and_values))
+            row = 0
+            for value in data_by_field_and_values:
+                main_window.table_widget.setItem(row, 0, QTableWidgetItem(str(value[0])))
+                main_window.table_widget.setItem(row, 1, QTableWidgetItem(value[1]))
+                main_window.table_widget.setItem(row, 2, QTableWidgetItem(value[2]))
+                main_window.table_widget.setItem(row, 3, QTableWidgetItem(value[3]))
+                main_window.table_widget.setItem(row, 4, QTableWidgetItem(value[4]))
+                main_window.table_widget.setItem(row, 5, QTableWidgetItem(value[5]))
+                main_window.table_widget.setItem(row, 6, QTableWidgetItem(value[6]))
+                main_window.table_widget.setItem(row, 7, QTableWidgetItem(value[7]))
+                row += 1
+            main_window.ui.btn_save_filter.setDisabled(False)
+            self.close_window()
+
+    def get_data_by_field_and_values(self):
+        return self.data_by_field_and_values
+
+    def change_name_table(self, new_name_table: str):
+        self.name_table = new_name_table
+
+    def show_window(self):
+        self.filter_window.show()
+
+    def close_window(self):
+        self.filter_window.close()
+
+
+class SaveFilterDialog(QMainWindow):
+    def __init__(self):
+        super(SaveFilterDialog, self).__init__()
+
+        self.save_filter_window = QtWidgets.QDialog()
+        self.ui_window = UiSaveFilterDialog()
+        self.ui_window.setupUi(self.save_filter_window)
+
+        self.ui_window.pushButton.clicked.connect(self.save_data)
+
+    def save_data(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Информация")
+        path = self.ui_window.lineEdit.text()
+        form = self.ui_window.comboBox.currentText()
+        if form == 'txt':
+            self.save_data_to_txt(path, main_window.filter_window.get_data_by_field_and_values())
+            dlg.setText(f'Данные сохранились в файл {path}.txt')
+            dlg.exec()
+        else:
+            self.save_data_to_json(path, main_window.filter_window.get_data_by_field_and_values())
+            dlg.setText(f'Данные сохранились в файл {path}.json')
+            dlg.exec()
+        self.close_window()
+
+    @staticmethod
+    def save_data_to_txt(path: str, data: list[tuple]):
+        with open((path + '.txt'), 'a', encoding='utf-8') as f:
+            for line in data:
+                f.write(', '.join(str(s) for s in line) + '\n')
+
+    @staticmethod
+    def save_data_to_json(path: str, data: list[tuple]):
+        with open((path + '.json'), 'w') as f:
+            json.dump(data, f)
+
+    def show_window(self):
+        self.save_filter_window.show()
+
+    def close_window(self):
+        self.save_filter_window.close()
+
+
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.table_widget = self.set_table_widget()
+        self.insert_window = None
+        self.delete_window = None
+        self.update_window = None
+        self.filter_window = None
+        self.save_filter_window = None
+
+        self.ui.btn_insert.clicked.connect(self.open_insert_window)
+        self.ui.btn_delete.clicked.connect(self.open_delete_window)
+        self.ui.btn_update.clicked.connect(self.open_update_window)
+        self.ui.btn_filter.clicked.connect(self.open_filter_dialog)
+        self.ui.btn_show_all_db.clicked.connect(self.set_table_widget)
+        self.ui.btn_exit.clicked.connect(self.close_app)
+        self.ui.btn_save_filter.clicked.connect(self.open_save_filter_window)
+        self.ui.btn_save_filter.setDisabled(True)
+
+    def open_insert_window(self):
+        self.ui.btn_save_filter.setDisabled(True)
+        self.insert_window = InsertDialog()
+        self.insert_window.show_window()
+
+    def open_delete_window(self):
+        self.ui.btn_save_filter.setDisabled(True)
+        self.delete_window = DeleteDialog()
+        self.delete_window.show_window()
+
+    def open_update_window(self):
+        self.ui.btn_save_filter.setDisabled(True)
+        self.update_window = UpdateDialog()
+        self.update_window.show_window()
+
+    def open_filter_dialog(self):
+        self.filter_window = FilterDialog()
+        self.filter_window.show_window()
+
+    def open_save_filter_window(self):
+        self.save_filter_window = SaveFilterDialog()
+        self.save_filter_window.show_window()
+
+    def set_table_widget(self):
+        self.ui.btn_save_filter.setDisabled(True)
+        self.table_widget = self.ui.tableWidget
+        self.table_widget.setColumnCount(8)
+        self.table_widget.setColumnWidth(0, 40)
+        self.table_widget.setColumnWidth(5, 200)
+        self.table_widget.setShowGrid(False)
+        self.table_widget.setSortingEnabled(True)
+        self.table_widget.horizontalHeader().setStretchLastSection(True)
+        self.table_widget.setHorizontalHeaderLabels(['ID', 'Имя', 'Фамилия', 'Страна', 'Город', 'Адрес',
+                                                     'Дата рождения', 'Телефон'])
+        all_db = people_data_base.get_all_data()
+        self.table_widget.setRowCount(len(all_db))
+        row = 0
+        for num, value in enumerate(all_db):
+            self.table_widget.setItem(row, 0, QTableWidgetItem(str(value[0])))
+            self.table_widget.setItem(row, 1, QTableWidgetItem(value[1]))
+            self.table_widget.setItem(row, 2, QTableWidgetItem(value[2]))
+            self.table_widget.setItem(row, 3, QTableWidgetItem(value[3]))
+            self.table_widget.setItem(row, 4, QTableWidgetItem(value[4]))
+            self.table_widget.setItem(row, 5, QTableWidgetItem(value[5]))
+            self.table_widget.setItem(row, 6, QTableWidgetItem(value[6]))
+            self.table_widget.setItem(row, 7, QTableWidgetItem(value[7]))
+            row += 1
+
+        return self.table_widget
+
+    @staticmethod
+    def close_app():
+        people_data_base.close_db()
+        sys.exit(app.exec())
 
 
 if __name__ == '__main__':
-    execute_application()
+    app = QApplication(sys.argv)
+
+    people_data_base = PeopleDB()
+    people_data_base.create_db()
+    people_data_base.create_table('people')
+
+    main_window = MainWindow()
+
+    main_window.show()
+    sys.exit(app.exec())
