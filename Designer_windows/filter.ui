@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>554</width>
+    <height>499</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>554</width>
+    <height>499</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>554</width>
+    <height>499</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:qlineargradient(spread:pad, x1:0.134423, y1:0.187, x2:0.935323, y2:0.909, stop:0 rgba(74, 0, 255, 255), stop:1 rgba(229, 30, 204, 255))</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>40</y>
+     <width>431</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(255, 255, 255, 30);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>440</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:white;
+background-color: none;
+font: 18pt &quot;Berlin Sans FB&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Выберите поле для фильтра</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="comboBox">
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QComboBox{
+color:white;
+font-size:16pt;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+}
+QComboBox:item{
+color:black;
+}</string>
+      </property>
+      <property name="currentText">
+       <string>Имя</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Имя</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Фамилия</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Страна</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Город</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Адрес</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Дата рождения</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Телефон</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="name">
+      <property name="minimumSize">
+       <size>
+        <width>400</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font-size:12pt &quot;Berlin Sans FB&quot;;
+padding-left: 10px;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>Введите значение поля</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="maximumSize">
+       <size>
+        <width>400</width>
+        <height>80</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 14pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+      </property>
+      <property name="text">
+       <string>Применить</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

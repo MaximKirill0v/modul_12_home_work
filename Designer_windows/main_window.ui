@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>640</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>52</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1100</width>
+    <height>638</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1100</width>
+    <height>640</height>
+   </size>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>People Data Base</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:qlineargradient(spread:pad, x1:0.134423, y1:0.187, x2:0.935323, y2:0.909, stop:0 rgba(74, 0, 255, 255), stop:1 rgba(229, 30, 204, 255))</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>391</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: none;</string>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="btn_insert">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Добавить пользователя в БД</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_delete">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Удалить пользователя из БД</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_update">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Обновить данные пользователя</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_filter">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Выборка по фильтрам из БД</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_show_all_db">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Вывод всей БД</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_exit">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+color:white;
+background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;
+width:400px;
+height:90px;
+font: 12pt &quot;Berlin Sans FB&quot;;
+}
+
+QPushButton:hover{
+background-color:rgba(255,255,255,40);
+}
+
+QPushButton:pressed{
+background-color:rgba(255,255,255,70);
+}</string>
+       </property>
+       <property name="text">
+        <string>Выход</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>40</y>
+      <width>651</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255,255,255,30);
+border:1px solid rgba(255,255,255,40);
+border-radius: 7px;</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>btn_update</tabstop>
+  <tabstop>btn_delete</tabstop>
+  <tabstop>btn_filter</tabstop>
+  <tabstop>btn_show_all_db</tabstop>
+  <tabstop>btn_exit</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
