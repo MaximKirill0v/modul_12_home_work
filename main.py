@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem, QAbstractItemView
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem
 from Designer_windows.new_main_window import Ui_MainWindow
 from Designer_windows.insert import UiInsertDialog
 from Designer_windows.delete import UiDeleteDialog
