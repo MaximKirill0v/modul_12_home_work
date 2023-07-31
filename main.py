@@ -352,7 +352,7 @@ class MainWindow(QMainWindow):
         self.table_widget.setColumnWidth(0, 40)
         self.table_widget.setColumnWidth(5, 200)
         self.table_widget.setShowGrid(False)
-        self.table_widget.setSortingEnabled(True)
+        self.table_widget.setSortingEnabled(False)
         self.table_widget.horizontalHeader().setStretchLastSection(True)
         self.table_widget.setHorizontalHeaderLabels(['ID', 'Имя', 'Фамилия', 'Страна', 'Город', 'Адрес',
                                                      'Дата рождения', 'Телефон'])
