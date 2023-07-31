@@ -284,7 +284,7 @@ class SaveFilterDialog(QMainWindow):
 
     @staticmethod
     def save_data_to_txt(path: str, data: list[tuple]):
-        with open((path + '.txt'), 'a', encoding='utf-8') as f:
+        with open((path + '.txt'), 'w', encoding='utf-8') as f:
             for line in data:
                 f.write(', '.join(str(s) for s in line) + '\n')
 
