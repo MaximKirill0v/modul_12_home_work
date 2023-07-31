@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets
-from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem
+from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QTableWidgetItem, QAbstractItemView
 from Designer_windows.new_main_window import Ui_MainWindow
 from Designer_windows.insert import UiInsertDialog
 from Designer_windows.delete import UiDeleteDialog
@@ -349,10 +349,12 @@ class MainWindow(QMainWindow):
         self.ui.btn_save_filter.setDisabled(True)
         self.table_widget = self.ui.tableWidget
         self.table_widget.setColumnCount(8)
-        self.table_widget.setColumnWidth(0, 40)
+        self.table_widget.setColumnWidth(0, 50)
         self.table_widget.setColumnWidth(5, 200)
         self.table_widget.setShowGrid(False)
         self.table_widget.setSortingEnabled(False)
+        self.table_widget.verticalHeader().setVisible(False)
+        self.table_widget.verticalScrollBar().setVisible(True)
         self.table_widget.horizontalHeader().setStretchLastSection(True)
         self.table_widget.setHorizontalHeaderLabels(['ID', 'Имя', 'Фамилия', 'Страна', 'Город', 'Адрес',
                                                      'Дата рождения', 'Телефон'])
